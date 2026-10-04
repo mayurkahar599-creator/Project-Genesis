@@ -4,29 +4,27 @@ import os
 
 def fetch_data():
     try:
-        print(f"[{datetime.now()}] Shifting target to Yahoo Finance Backend...")
+        print(f"[{datetime.now()}] Hunting for data... Bypassing weekend closures.")
         
-        # GC=F दुनिया भर में सोने (Gold Futures) का असली टिकर सिंबल है
         gold = yf.Ticker("GC=F")
         
-        # पिछले 1 दिन का डेटा निकाल रहे हैं
-        data = gold.history(period="1d")
+        # 1d की जगह हमने 5d कर दिया है। अगर आज संडे है, तो ये फ्राइडे का रेट निकाल लाएगा!
+        data = gold.history(period="5d")
         
-        if not data.empty:
-            # लेटेस्ट क्लोजिंग प्राइस निकाल रहे हैं
-            current_price = data['Close'].iloc[-1]
+        file_exists = os.path.isfile("market_data.csv")
+        
+        with open("market_data.csv", "a") as file:
+            if not file_exists or os.stat("market_data.csv").st_size == 0:
+                file.write("Timestamp, Commodity, Price (USD)\n")
             
-            file_exists = os.path.isfile("market_data.csv")
-            with open("market_data.csv", "a") as file:
-                if not file_exists or os.stat("market_data.csv").st_size == 0:
-                    file.write("Timestamp, Commodity, Price (USD)\n")
-                
-                # कीमत को 2 डेसिमल तक राउंड कर रहे हैं
+            if not data.empty:
+                current_price = data['Close'].iloc[-1]
                 file.write(f"{datetime.now()}, Gold (GC=F), {round(current_price, 2)}\n")
-            
-            print(f"Success! Gold Price Extracted: {round(current_price, 2)} USD")
-        else:
-            print("Data stream empty. Market might be completely closed or symbol changed.")
+                print(f"Success! Extracted Price: {round(current_price, 2)} USD")
+            else:
+                # अगर मार्केट पूरी तरह गायब हो, तो भी फाइल में एंट्री होगी ताकि हमें पता रहे
+                file.write(f"{datetime.now()}, Gold (GC=F), MARKET_CLOSED\n")
+                print("Market closed, forced empty log entry.")
             
     except Exception as e:
         print(f"Extraction failed: {e}")
