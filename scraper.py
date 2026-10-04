@@ -1,46 +1,35 @@
-import requests
-import json
+import yfinance as yf
 from datetime import datetime
 import os
-import urllib3
-
-# हम सिस्टम को बोल रहे हैं कि SSL सिक्योरिटी की चेतावनियों को इग्नोर करे (Bypass)
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
-
-TARGET_URL = "https://api.metals.live/v1/spot"
 
 def fetch_data():
     try:
-        print(f"[{datetime.now()}] Target locked. Bypassing TLS/SSL Security...")
+        print(f"[{datetime.now()}] Shifting target to Yahoo Finance Backend...")
         
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
-            'Accept-Language': 'en-US,en;q=0.9',
-            'Connection': 'keep-alive'
-        }
+        # GC=F दुनिया भर में सोने (Gold Futures) का असली टिकर सिंबल है
+        gold = yf.Ticker("GC=F")
         
-        # सबसे बड़ा हथियार: verify=False (यह SSL सिक्योरिटी को चकमा दे देगा)
-        response = requests.get(TARGET_URL, headers=headers, timeout=10, verify=False)
+        # पिछले 1 दिन का डेटा निकाल रहे हैं
+        data = gold.history(period="1d")
         
-        if response.status_code == 200:
-            data = response.json()
-            gold_data = data[0]['gold']
+        if not data.empty:
+            # लेटेस्ट क्लोजिंग प्राइस निकाल रहे हैं
+            current_price = data['Close'].iloc[-1]
             
             file_exists = os.path.isfile("market_data.csv")
-            
             with open("market_data.csv", "a") as file:
                 if not file_exists or os.stat("market_data.csv").st_size == 0:
-                    file.write("Timestamp, Commodity, Price\n")
+                    file.write("Timestamp, Commodity, Price (USD)\n")
                 
-                file.write(f"{datetime.now()}, Gold, {gold_data}\n")
+                # कीमत को 2 डेसिमल तक राउंड कर रहे हैं
+                file.write(f"{datetime.now()}, Gold (GC=F), {round(current_price, 2)}\n")
             
-            print("Security Bypassed. Payload secured.")
+            print(f"Success! Gold Price Extracted: {round(current_price, 2)} USD")
         else:
-            with open("market_data.csv", "a") as file:
-                file.write(f"{datetime.now()}, BLOCKED, {response.status_code}\n")
+            print("Data stream empty. Market might be completely closed or symbol changed.")
             
     except Exception as e:
+        print(f"Extraction failed: {e}")
         with open("market_data.csv", "a") as file:
             file.write(f"{datetime.now()}, ERROR, {e}\n")
 
