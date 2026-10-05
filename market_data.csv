@@ -1,5 +1,3 @@
-2026-10-04 14:24:21.638630, ERROR, HTTPSConnectionPool(host='api.metals.live', port=443): Max retries exceeded with url: /v1/spot (Caused by SSLError(SSLError(1, '[SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1082)')))
-2026-10-04 14:31:47.605755, ERROR, HTTPSConnectionPool(host='api.metals.live', port=443): Max retries exceeded with url: /v1/spot (Caused by SSLError(SSLError(1, '[SSL: TLSV1_UNRECOGNIZED_NAME] tlsv1 unrecognized name (_ssl.c:1082)')))
 2026-10-04 14:52:04.741582, Gold (GC=F), 4162.3
 2026-10-05 02:12:48.463861, Gold (GC=F), 4188.7
 2026-10-05 08:03:31.860857, Gold (GC=F), 4190.6
