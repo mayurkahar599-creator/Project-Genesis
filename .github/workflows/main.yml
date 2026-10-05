@@ -1,15 +1,15 @@
-name: Genesis Scraper Engine
+name: Genesis Scraper & AI Engine
 
 on:
   schedule:
-    - cron: '0 2 * * *' # यह रोज रात को रन होगा
-  workflow_dispatch: # यह बटन देगा जिससे हम इसे मैन्युअली भी रन कर सकते हैं
+    - cron: '0 2 * * *'
+  workflow_dispatch:
 
 jobs:
-  extract-data:
+  execute-pipeline:
     runs-on: ubuntu-latest
     steps:
-      - name: Access the Vault (Checkout repo)
+      - name: Access the Vault
         uses: actions/checkout@v3
 
       - name: Booting Python System
@@ -17,17 +17,19 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Loading Weapons (Install dependencies)
+      - name: Loading Weapons
         run: pip install -r requirements.txt
 
-      - name: Executing Extraction (Run Scraper)
+      - name: Phase 1 - Executing Data Extraction
         run: python scraper.py
         
-      # यह स्टेप नए खींचे गए डेटा को वापस GitHub में सेव कर देगा
-      - name: Commit and Push Data
+      - name: Phase 2 - Executing AI Forecast
+        run: python predict.py
+        
+      - name: Secure Payload to Vault
         run: |
           git config --global user.name 'Genesis Bot'
           git config --global user.email 'bot@genesis.com'
-          git add market_data.csv
-          git commit -m "Auto-update market data" || echo "No new data to commit"
-          git push
+          git add market_data.csv prediction_output.csv
+          git commit -m "Auto-update: Pipeline executed successfully on $(date)" || echo "No new data to commit"
+          git push origin main
