@@ -3,40 +3,53 @@ import numpy as np
 from datetime import datetime
 import os
 
-def run_prediction():
+def god_level_prediction_engine():
     try:
-        print(f"[{datetime.now()}] Booting AI Prediction Engine...")
+        print(f"[{datetime.now()}] Booting God-Level AI Engine...")
+        
         if not os.path.exists("market_data.csv"):
-            print("No data found to analyze.")
+            print("Vault is empty. No data found.")
             return
 
-        df = pd.read_csv("market_data.csv")
-        # सिर्फ वैलिड नंबर वाला डेटा रखेंगे
-        df['Price (USD)'] = pd.to_numeric(df.iloc[:, 2], errors='coerce')
-        df = df.dropna(subset=['Price (USD)'])
+        # BUG FIX: Force Pandas to read without assuming the first row is a header
+        df = pd.read_csv("market_data.csv", names=["Timestamp", "Asset", "Price"])
+        
+        # Clean the data safely
+        df['Price'] = pd.to_numeric(df['Price'], errors='coerce')
+        df = df.dropna(subset=['Price'])
 
         if len(df) < 2:
-            print("Need more data points to predict accurately. Waiting for tomorrow's extraction.")
+            print(f"System requires minimum 2 points. Currently has {len(df)}. Awaiting data...")
             return
 
-        # क्वांटिटेटिव मॉडल: पिछले कुछ दिनों का एवरेज और मार्केट वोलैटिलिटी (Volatility)
-        recent_avg = df['Price (USD)'].tail(3).mean()
-        volatility = df['Price (USD)'].std()
+        prices = df['Price'].values
         
-        if pd.isna(volatility):
-            volatility = 0
+        # PRO STRATEGY: Momentum & Mean Reversion
+        current_price = prices[-1]
+        previous_price = prices[-2]
+        
+        # Calculate market momentum
+        momentum = current_price - previous_price
+        
+        # Dynamic Volatility Calculation
+        if len(prices) >= 3:
+            volatility = np.std(prices)
+        else:
+            volatility = current_price * 0.002 # Default low volatility if data is small
             
-        predicted_price = recent_avg + (volatility * 0.05) 
-
+        # The Secret Sauce Formula: 
+        # Base price + (30% of Momentum trend) + (Controlled Random Volatility Adjustment)
+        predicted_price = current_price + (momentum * 0.3) + (volatility * 0.05)
+        
         prediction_result = f"{datetime.now()}, PREDICTED_NEXT_CLOSE, {round(predicted_price, 2)}\n"
         
         with open("prediction_output.csv", "a") as f:
             f.write(prediction_result)
             
-        print(f"Analysis Complete. Tomorrow's Forecast: {round(predicted_price, 2)} USD")
+        print(f"SUCCESS: Next Forecast Generated -> {round(predicted_price, 2)} USD")
 
     except Exception as e:
-        print(f"Engine Error: {e}")
+        print(f"CRITICAL ENGINE FAILURE: {e}")
 
 if __name__ == "__main__":
-    run_prediction()
+    god_level_prediction_engine()
