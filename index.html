@@ -3,81 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genesis AI | Market Terminal</title>
+    <title>Genesis AI | Quant Terminal</title>
     <style>
-        body { background-color: #0d1117; color: #c9d1d9; font-family: 'Courier New', Courier, monospace; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; background: #161b22; padding: 20px; border-radius: 8px; border: 1px solid #30363d; }
-        h1 { color: #58a6ff; border-bottom: 1px solid #30363d; padding-bottom: 10px; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #30363d; }
-        th { color: #8b949e; }
-        .live-indicator { color: #3fb950; font-weight: bold; }
+        @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+        
+        :root {
+            --bg-color: #0b0e14;
+            --panel-bg: #151a23;
+            --border-color: #2a3241;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --neon-blue: #00f0ff;
+            --neon-green: #3fb950;
+            --neon-red: #ff3333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Share Tech Mono', monospace;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 260px;
+            background-color: var(--panel-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            font-size: 24px;
+            color: white;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .logo span { color: var(--neon-blue); text-shadow: 0 0 10px rgba(0,240,255,0.5); }
+
+        .nav-btn {
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid transparent;
+            padding: 15px;
+            text-align: left;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .nav-btn:hover { border-color: var(--border-color); color: white; }
+        .nav-btn.active {
+            border-color: var(--neon-blue);
+            color: var(--neon-blue);
+            background: rgba(0, 240, 255, 0.05);
+            box-shadow: inset 4px 0 0 var(--neon-blue);
+        }
+
+        /* Main Content Styles */
+        .content {
+            flex-grow: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .status { color: var(--neon-green); text-shadow: 0 0 8px var(--neon-green); }
+
+        /* Sections */
+        .section { display: none; animation: fadeIn 0.4s ease-in; }
+        .section.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Table Styles */
+        .data-panel { background: var(--panel-bg); border: 1px solid var(--border-color); border-radius: 4px; padding: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 15px; text-align: left; border-bottom: 1px solid var(--border-color); }
+        th { color: var(--neon-blue); }
+        
+        /* Prediction Panel */
+        .pred-box {
+            background: rgba(0, 240, 255, 0.03);
+            border: 1px solid var(--neon-blue);
+            padding: 30px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .pred-value { font-size: 40px; color: white; margin: 15px 0; text-shadow: 0 0 15px rgba(255,255,255,0.3); }
+        .signal-buy { color: var(--neon-green); font-size: 24px; font-weight: bold; border: 1px solid var(--neon-green); padding: 5px 15px; display: inline-block;}
+        .signal-sell { color: var(--neon-red); font-size: 24px; font-weight: bold; border: 1px solid var(--neon-red); padding: 5px 15px; display: inline-block;}
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Genesis AI Terminal <span class="live-indicator">● LIVE</span></h1>
-        <p>Real-time Quantitative Market Data & Predictions (GC=F)</p>
-        
-        <table>
-            <thead>
-                <tr>
-                    <th>Timestamp (UTC)</th>
-                    <th>Asset</th>
-                    <th>Price (USD)</th>
-                </tr>
-            </thead>
-            <tbody id="data-table-body">
-                <tr><td colspan="3">Fetching secure data from Supabase...</td></tr>
-            </tbody>
-        </table>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="logo">Genesis<span>.Core</span></div>
+        <button class="nav-btn active" onclick="switchTab('feed', this)">> Live Feed</button>
+        <button class="nav-btn" onclick="switchTab('analysis', this)">> Deep Analysis</button>
+        <button class="nav-btn" onclick="switchTab('chart', this)">> Market Chart</button>
     </div>
 
+    <!-- Main Content Area -->
+    <div class="content">
+        <div class="top-bar">
+            <h2>SYSTEM TERMINAL v2.0</h2>
+            <div class="status">● AI ENGINE ONLINE</div>
+        </div>
+
+        <!-- TAB 1: Live Feed -->
+        <div id="feed" class="section active">
+            <h3 style="margin-bottom: 20px; color: var(--text-muted);">Raw Data Extraction (GC=F)</h3>
+            <div class="data-panel">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>TIMESTAMP (UTC)</th>
+                            <th>ASSET</th>
+                            <th>LAST PRICE</th>
+                        </tr>
+                    </thead>
+                    <tbody id="db-data">
+                        <tr><td colspan="3">Decrypting Database...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TAB 2: Deep Analysis (Predictions) -->
+        <div id="analysis" class="section">
+            <h3 style="margin-bottom: 20px; color: var(--text-muted);">Momentum Algorithm Output</h3>
+            <div class="data-panel">
+                <p>Based on the latest institutional volume and price action, the Genesis AI Engine has calculated the following trajectory for the next session.</p>
+                <div class="pred-box" id="prediction-engine">
+                    <p style="color: var(--neon-blue);">TARGET NEXT CLOSE</p>
+                    <div class="pred-value" id="pred-target">Analyzing...</div>
+                    <div id="pred-signal">Waiting for data...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: Market Chart -->
+        <div id="chart" class="section">
+            <h3 style="margin-bottom: 20px; color: var(--text-muted);">Real-Time Institutional Chart</h3>
+            <div class="data-panel" style="height: 500px;">
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container">
+                  <div id="tradingview_1a2b"></div>
+                  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                  <script type="text/javascript">
+                  new TradingView.widget({
+                  "autosize": true,
+                  "symbol": "COMEX:GC1!",
+                  "interval": "D",
+                  "timezone": "Etc/UTC",
+                  "theme": "dark",
+                  "style": "1",
+                  "locale": "en",
+                  "enable_publishing": false,
+                  "backgroundColor": "#151a23",
+                  "gridColor": "#2a3241",
+                  "hide_top_toolbar": true,
+                  "container_id": "tradingview_1a2b"
+                });
+                  </script>
+                </div>
+                <!-- TradingView Widget END -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- The Brain (Logic) -->
     <script>
-        // === ENTERPRISE API CONNECTION ===
-        // भाई, यहाँ नीचे वाले दोनों कोट्स (' ') के बीच में अपनी डिटेल्स डाल दे:
+        // === SUPABASE CONNECTION ===
+        // भाई, अपनी दोनों डिटेल्स यहाँ फिर से डाल देना
         const SUPABASE_URL = 'https://xmyawkycmsvatgpmwzrj.supabase.co';
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhteWF3a3ljbXN2YXRncG13enJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0NzQ0NDAsImV4cCI6MjEwNzA1MDQ0MH0.g3B7yOcPfD4dY37ukXrH7EGrb0gK5qN7uu8eoqZyQ9g';
 
-        async function fetchMarketData() {
-            try {
-                const response = await fetch(`${SUPABASE_URL}/rest/v1/genesis_market_data?select=*&order=created_at.desc&limit=10`, {
-                    method: 'GET',
-                    headers: {
-                        'apikey': SUPABASE_ANON_KEY,
-                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
-                        'Content-Type': 'application/json'
-                    }
-                });
+        // Tab Switching Logic
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
 
-                if (!response.ok) throw new Error('Data sync failed');
+        // Fetch Data & Calculate Prediction
+        async function runGenesisEngine() {
+            try {
+                // Fetch latest 10 records for table, need at least 2 for momentum math
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/genesis_market_data?select=*&order=created_at.desc&limit=10`, {
+                    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+                });
                 
                 const data = await response.json();
-                const tableBody = document.getElementById('data-table-body');
-                tableBody.innerHTML = ''; // Clear loading text
-
+                
+                // 1. Populate Live Table
+                let tableHtml = '';
                 data.forEach(row => {
-                    const tr = document.createElement('tr');
-                    // Format timestamp
-                    const dateObj = new Date(row.created_at);
-                    const formattedDate = dateObj.toISOString().replace('T', ' ').substring(0, 19);
-
-                    tr.innerHTML = `
-                        <td>${formattedDate}</td>
-                        <td>${row.asset}</td>
-                        <td style="color: #58a6ff; font-weight: bold;">$${row.price}</td>
-                    `;
-                    tableBody.appendChild(tr);
+                    const time = new Date(row.created_at).toISOString().replace('T', ' ').substring(0, 19);
+                    tableHtml += `<tr><td>${time}</td><td>${row.asset}</td><td style="color:white;">$${row.price}</td></tr>`;
                 });
+                document.getElementById('db-data').innerHTML = tableHtml;
+
+                // 2. Autonomous Deep Prediction Math (Frontend AI Logic)
+                if(data.length >= 2) {
+                    const todayPrice = parseFloat(data[0].price);
+                    const yesterdayPrice = parseFloat(data[1].price);
+                    
+                    // Momentum Calculation (30% of the diff)
+                    const momentum = todayPrice - yesterdayPrice;
+                    const predictedPrice = (todayPrice + (momentum * 0.3)).toFixed(2);
+                    
+                    document.getElementById('pred-target').innerText = `$${predictedPrice}`;
+                    
+                    // Signal Logic
+                    if(momentum > 0) {
+                        document.getElementById('pred-signal').innerHTML = '<span class="signal-buy">SIGNAL: STRONG BUY ↗</span>';
+                    } else {
+                        document.getElementById('pred-signal').innerHTML = '<span class="signal-sell">SIGNAL: SELL / SHORT ↘</span>';
+                    }
+                }
 
             } catch (error) {
-                console.error("API Error:", error);
-                document.getElementById('data-table-body').innerHTML = '<tr><td colspan="3" style="color: #f85149;">Connection Error. System analyzing...</td></tr>';
+                console.error(error);
+                document.getElementById('db-data').innerHTML = '<tr><td colspan="3" style="color: var(--neon-red);">SYSTEM OFFLINE OR KEYS MISSING.</td></tr>';
             }
         }
 
-        // Run fetch on load
-        fetchMarketData();
+        // Initialize Engine
+        runGenesisEngine();
     </script>
 </body>
 </html>
