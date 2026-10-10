@@ -12,3 +12,72 @@
         th, td { padding: 12px; text-align: left; border-bottom: 1px solid #30363d; }
         th { color: #8b949e; }
         .live-indicator { color: #3fb950; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Genesis AI Terminal <span class="live-indicator">● LIVE</span></h1>
+        <p>Real-time Quantitative Market Data & Predictions (GC=F)</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Timestamp (UTC)</th>
+                    <th>Asset</th>
+                    <th>Price (USD)</th>
+                </tr>
+            </thead>
+            <tbody id="data-table-body">
+                <tr><td colspan="3">Fetching secure data from Supabase...</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // === ENTERPRISE API CONNECTION ===
+        // भाई, यहाँ नीचे वाले दोनों कोट्स (' ') के बीच में अपनी डिटेल्स डाल दे:
+        const SUPABASE_URL = 'यहाँ_अपना_SUPABASE_URL_डाल';
+        const SUPABASE_ANON_KEY = 'यहाँ_अपनी_ANON_KEY_डाल';
+
+        async function fetchMarketData() {
+            try {
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/genesis_market_data?select=*&order=created_at.desc&limit=10`, {
+                    method: 'GET',
+                    headers: {
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (!response.ok) throw new Error('Data sync failed');
+                
+                const data = await response.json();
+                const tableBody = document.getElementById('data-table-body');
+                tableBody.innerHTML = ''; // Clear loading text
+
+                data.forEach(row => {
+                    const tr = document.createElement('tr');
+                    // Format timestamp
+                    const dateObj = new Date(row.created_at);
+                    const formattedDate = dateObj.toISOString().replace('T', ' ').substring(0, 19);
+
+                    tr.innerHTML = `
+                        <td>${formattedDate}</td>
+                        <td>${row.asset}</td>
+                        <td style="color: #58a6ff; font-weight: bold;">$${row.price}</td>
+                    `;
+                    tableBody.appendChild(tr);
+                });
+
+            } catch (error) {
+                console.error("API Error:", error);
+                document.getElementById('data-table-body').innerHTML = '<tr><td colspan="3" style="color: #f85149;">Connection Error. System analyzing...</td></tr>';
+            }
+        }
+
+        // Run fetch on load
+        fetchMarketData();
+    </script>
+</body>
+</html>
