@@ -3,145 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genesis AI | Nifty 50 Quantum Core</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Genesis Quantum | Institutional B2B Terminal</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700;800&family=Space+Grotesk:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --bg-dark: #050505; --bg-card: #111111; --accent-blue: #00e5ff; --accent-purple: #7000ff; --text-main: #f0f0f0; --text-muted: #888888; --green: #00ff88; --red: #ff3366; --border: #222222; }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Space Grotesk', sans-serif; }
-        body { background-color: var(--bg-dark); color: var(--text-main); overflow-x: hidden; }
-        nav { position: fixed; top: 0; width: 100%; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(5, 5, 5, 0.9); border-bottom: 1px solid var(--border); z-index: 1000; }
-        .logo { font-size: 24px; font-weight: 700; } .logo span { color: var(--accent-blue); }
-        .terminal-container { padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
-        .section-title { font-size: 36px; margin-bottom: 10px; }
-        .section-subtitle { color: var(--text-muted); margin-bottom: 40px; font-size: 16px; }
-        .dashboard-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
-        @media(min-width: 1024px) { .dashboard-grid { grid-template-columns: 1fr 1fr; } }
-        .dash-panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .panel-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); padding-bottom: 15px; margin-bottom: 20px; }
-        .live-dot { color: var(--green); font-size: 12px; font-weight: bold; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
-        table { width: 100%; border-collapse: collapse; font-size: 14px; }
-        th, td { padding: 15px 10px; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        th { color: var(--text-muted); text-transform: uppercase; font-size: 12px; }
-        .prediction-box { background: rgba(0, 229, 255, 0.05); border: 1px dashed var(--accent-blue); padding: 30px 20px; text-align: center; border-radius: 8px; margin-top: 20px; }
-        .target-price { font-size: 42px; font-weight: 700; color: white; margin: 15px 0; }
-        .signal { display: inline-block; padding: 8px 20px; font-weight: 700; font-size: 18px; border-radius: 4px; }
-        .signal.buy { background: rgba(0, 255, 136, 0.1); color: var(--green); border: 1px solid var(--green); }
-        .signal.sell { background: rgba(255, 51, 102, 0.1); color: var(--red); border: 1px solid var(--red); }
-        .conf-badge { font-size: 14px; color: var(--accent-blue); margin-top: 10px; display: block; letter-spacing: 1px; font-weight: bold; }
-        .chart-wrapper { height: 450px; width: 100%; margin-top: 20px; }
-    </style>
-</head>
-<body>
-    <nav>
-        <div class="logo">Genesis<span>.Core</span></div>
-        <div style="font-size: 14px; color: var(--text-muted); letter-spacing: 2px;">INDIAN EQUITIES | NIFTY 50</div>
-    </nav>
-
-    <section class="terminal-container">
-        <h2 class="section-title">Institutional AI Engine</h2>
-        <p class="section-subtitle">Live Demonstration: Ensembled ML Models tracking NSE NIFTY 50 Index.</p>
+        :root { --bg-base: #000000; --bg-surface: #0a0a0c; --bg-panel: #111111; --accent-cyan: #00f0ff; --accent-magenta: #ff003c; --text-primary: #ffffff; --text-dim: #777777; --border-color: #222222; --success: #00ff73; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-base); color: var(--text-primary); font-family: 'Space Grotesk', sans-serif; overflow: hidden; }
         
-        <div class="dashboard-grid">
-            <div class="dash-panel">
-                <div class="panel-header">
-                    <h3 style="font-size: 18px;">Deep Learning Trajectory</h3>
-                    <div class="live-dot">● SYSTEM SECURE</div>
-                </div>
-                
-                <div style="max-height: 200px; overflow-y: auto;">
-                    <table>
-                        <thead><tr><th>Time (UTC)</th><th>Asset</th><th>Current Price</th></tr></thead>
-                        <tbody id="db-data">
-                            <tr><td colspan="3" style="text-align: center;">Syncing with Genesis Core...</td></tr>
-                        </tbody>
-                    </table>
-                </div>
+        /* 🔒 SECURE LOGIN GATE */
+        #auth-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000000; z-index: 9999; display: flex; justify-content: center; align-items: center; }
+        .auth-box { background: var(--bg-panel); border: 1px solid var(--border-color); padding: 50px; width: 100%; max-width: 400px; text-align: center; box-shadow: 0 0 30px rgba(0, 240, 255, 0.05); }
+        .auth-logo { font-size: 28px; font-weight: 800; letter-spacing: 2px; margin-bottom: 5px; }
+        .auth-logo span { color: var(--accent-cyan); }
+        .auth-desc { font-family: 'JetBrains Mono'; font-size: 10px; color: var(--text-dim); margin-bottom: 40px; letter-spacing: 1px; }
+        
+        .api-input { width: 100%; background: var(--bg-base); border: 1px solid var(--border-color); color: var(--accent-cyan); padding: 15px; font-family: 'JetBrains Mono'; text-align: center; font-size: 14px; margin-bottom: 20px; outline: none; transition: border 0.3s; }
+        .api-input:focus { border-color: var(--accent-cyan); }
+        .auth-btn { width: 100%; background: var(--accent-cyan); color: #000; border: none; padding: 15px; font-weight: 800; font-family: 'Space Grotesk'; cursor: pointer; transition: 0.3s; font-size: 14px; letter-spacing: 1px; }
+        .auth-btn:hover { background: #fff; }
+        .error-msg { color: var(--accent-magenta); font-family: 'JetBrains Mono'; font-size: 11px; margin-top: 15px; display: none; }
 
-                <div class="prediction-box">
-                    <p style="color: var(--text-muted); font-size: 12px; letter-spacing: 2px;">NEXT SESSION PREDICTION (EOD)</p>
-                    <div class="target-price" id="pred-target">Initializing Engine...</div>
-                    <div id="pred-signal" style="margin-top: 10px;">
-                        <span style="color: var(--text-muted);">Awaiting ML Engine Execution...</span>
-                    </div>
-                </div>
-            </div>
+        /* 💻 MAIN DASHBOARD */
+        #main-dashboard { display: none; padding: 15px; height: 100vh; display: flex; flex-direction: column; }
+        
+        nav { display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 1px solid var(--border-color); margin-bottom: 15px; }
+        .nav-logo { font-size: 18px; font-weight: 800; letter-spacing: 1px; }
+        .nav-logo span { color: var(--accent-cyan); }
+        .nav-stats { display: flex; gap: 20px; font-family: 'JetBrains Mono'; font-size: 11px; color: var(--text-dim); }
+        .status-dot { color: var(--success); text-shadow: 0 0 8px var(--success); }
 
-            <div class="dash-panel">
-                <div class="panel-header">
-                    <h3 style="font-size: 18px;">Live Nifty 50 Institutional Flow</h3>
-                    <div class="live-dot" style="color: var(--text-muted);">TICKER ACTIVE</div>
-                </div>
-                <div class="chart-wrapper">
-                    <div class="tradingview-widget-container" style="height:100%;width:100%">
-                      <div id="tradingview_1a2b" style="height:100%;width:100%"></div>
-                      <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-                      <script type="text/javascript">
-                      new TradingView.widget({
-                      "autosize": true,
-                      "symbol": "NSE:NIFTY",
-                      "interval": "D",
-                      "timezone": "Asia/Kolkata",
-                      "theme": "dark",
-                      "style": "1",
-                      "locale": "en",
-                      "enable_publishing": false,
-                      "backgroundColor": "#111111",
-                      "gridColor": "#222222",
-                      "hide_top_toolbar": true,
-                      "container_id": "tradingview_1a2b"
-                    });
-                      </script>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        .dashboard-grid { display: grid; grid-template-columns: 75% 25%; gap: 15px; height: calc(100vh - 70px); }
+        .panel { background: var(--bg-panel); border: 1px solid var(--border-color); display: flex; flex-direction: column; position: relative; }
+        .panel-title { position: absolute; top: 10px; left: 15px; font-family: 'JetBrains Mono'; font-size: 10px; color: var(--text-dim); z-index: 10; background: rgba(17,17,17,0.8); padding: 2px 5px; }
 
-    <script>
-        const SUPABASE_URL = 'https://xmyawkycmsvatgpmwzrj.supabase.co';
-        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhteWF3a3ljbXN2YXRncG13enJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0NzQ0NDAsImV4cCI6MjEwNzA1MDQ0MH0.g3B7yOcPfD4dY37ukXrH7EGrb0gK5qN7uu8eoqZyQ9g';
-
-        async function bootSystem() {
-            try {
-                // Fetch only Nifty 50 data
-                const response = await fetch(`${SUPABASE_URL}/rest/v1/genesis_market_data?asset=eq.Nifty%2050%20Index&select=*&order=created_at.desc&limit=5`, {
-                    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
-                });
-                
-                if(!response.ok) throw new Error("DB Blocked");
-                const data = await response.json();
-                
-                let tableHtml = '';
-                data.forEach(row => {
-                    const time = new Date(row.created_at).toISOString().replace('T', ' ').substring(0, 16);
-                    tableHtml += `<tr><td>${time}</td><td>${row.asset}</td><td style="color: #00e5ff; font-weight: 600;">₹${row.price}</td></tr>`;
-                });
-                document.getElementById('db-data').innerHTML = tableHtml || '<tr><td colspan="3" style="text-align: center;">No Nifty 50 data found yet...</td></tr>';
-
-                if(data.length > 0) {
-                    const latest = data[0];
-                    if(latest.predicted_price && latest.signal) {
-                        document.getElementById('pred-target').innerText = `₹${latest.predicted_price}`;
-                        
-                        let signalHtml = '';
-                        if(latest.signal.includes('BUY')) {
-                            signalHtml = `<span class="signal buy">${latest.signal} ↗</span>`;
-                        } else {
-                            signalHtml = `<span class="signal sell">${latest.signal} ↘</span>`;
-                        }
-                        
-                        let confHtml = latest.confidence ? `<span class="conf-badge">ENSEMBLE CONFIDENCE: ${latest.confidence}%</span>` : '';
-                        
-                        document.getElementById('pred-signal').innerHTML = signalHtml + confHtml;
-                    }
-                }
-            } catch (error) {
-                console.error(error);
-                document.getElementById('db-data').innerHTML = '<tr><td colspan="3" style="color: #ff3366;">API CONNECTION FAILED</td></tr>';
-            }
-        }
-        bootSystem();
-    </script>
-</body>
-</html>
+        /* Chart & AI Sections */
+        .chart-container { width: 100%; height: 100%; }
+        
+        .ai-sidebar { padding: 20px; display: flex; flex-direction: column; gap: 20px; overflow-y: auto; }
+        .ai-card { background: var(--bg-base); border: 1px solid var(--border-color); padding: 20px; text-align: center; }
+        .target-price { font-size: 32px; font-weight: 800; color: #fff; margin: 10px 0; }
+        .signal-tag { display: inline-block; padding: 6px 12px; font-family: 'JetBrains Mono'; font-size: 12px; font-weight: 700; border: 1px solid; }
+        .signal-bull { color: var(--success); border-color: var(--success); background: rgba(0, 255, 115, 0.05); }
+        .signal-bear { color: var(--accent-magenta); border-color: var(--accent-magenta); background: rgba(255, 0, 60, 0.05); }
+        
+        .conf-wrapper { margin-top: 15px; text-align: left; }
+        .conf-header { display: flex; justify-content: space-between; font-family: 'JetBrains Mono'; font-size: 10px; color: var(--text-dim); margin-bottom: 5px; }
+        .conf-bar { width: 100%; height: 4px; background: var(--border-color); }
