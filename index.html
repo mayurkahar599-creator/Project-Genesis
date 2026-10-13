@@ -10,7 +10,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: var(--bg-base); color: var(--text-primary); font-family: 'Space Grotesk', sans-serif; overflow: hidden; }
         
-        /* 🔒 SECURE LOGIN GATE */
         #auth-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: #000000; z-index: 9999; display: flex; justify-content: center; align-items: center; }
         .auth-box { background: var(--bg-panel); border: 1px solid var(--border-color); padding: 50px; width: 100%; max-width: 400px; text-align: center; box-shadow: 0 0 30px rgba(0, 240, 255, 0.05); }
         .auth-logo { font-size: 28px; font-weight: 800; letter-spacing: 2px; margin-bottom: 5px; }
@@ -23,8 +22,7 @@
         .auth-btn:hover { background: #fff; }
         .error-msg { color: var(--accent-magenta); font-family: 'JetBrains Mono'; font-size: 11px; margin-top: 15px; display: none; }
 
-        /* 💻 MAIN DASHBOARD */
-        #main-dashboard { display: none; padding: 15px; height: 100vh; display: flex; flex-direction: column; }
+        #main-dashboard { display: none; padding: 15px; height: 100vh; flex-direction: column; }
         
         nav { display: flex; justify-content: space-between; align-items: center; padding-bottom: 15px; border-bottom: 1px solid var(--border-color); margin-bottom: 15px; }
         .nav-logo { font-size: 18px; font-weight: 800; letter-spacing: 1px; }
@@ -36,7 +34,6 @@
         .panel { background: var(--bg-panel); border: 1px solid var(--border-color); display: flex; flex-direction: column; position: relative; }
         .panel-title { position: absolute; top: 10px; left: 15px; font-family: 'JetBrains Mono'; font-size: 10px; color: var(--text-dim); z-index: 10; background: rgba(17,17,17,0.8); padding: 2px 5px; }
 
-        /* Chart & AI Sections */
         .chart-container { width: 100%; height: 100%; }
         
         .ai-sidebar { padding: 20px; display: flex; flex-direction: column; gap: 20px; overflow-y: auto; }
@@ -49,3 +46,149 @@
         .conf-wrapper { margin-top: 15px; text-align: left; }
         .conf-header { display: flex; justify-content: space-between; font-family: 'JetBrains Mono'; font-size: 10px; color: var(--text-dim); margin-bottom: 5px; }
         .conf-bar { width: 100%; height: 4px; background: var(--border-color); }
+        .conf-fill { height: 100%; background: var(--accent-cyan); width: 0%; transition: 1s; }
+
+        .log-box { font-family: 'JetBrains Mono'; font-size: 10px; color: var(--text-dim); border-top: 1px dashed var(--border-color); padding-top: 10px; }
+        .log-line { margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+    <div id="auth-overlay">
+        <div class="auth-box">
+            <div class="auth-logo">GENESIS<span>.AI</span></div>
+            <div class="auth-desc">INSTITUTIONAL QUANTUM TERMINAL</div>
+            
+            <input type="password" id="login-key" class="api-input" placeholder="Enter API or Master Key" autocomplete="off">
+            <button class="auth-btn" onclick="verifyLogin()">INITIALIZE</button>
+            
+            <div id="error-msg" class="error-msg">ACCESS DENIED. INVALID CREDENTIALS.</div>
+        </div>
+    </div>
+
+    <div id="main-dashboard">
+        <nav>
+            <div class="nav-logo">GENESIS<span>.AI</span></div>
+            <div class="nav-stats">
+                <span>MODEL: ENSEMBLE-V2</span>
+                <span>DB: SUPABASE</span>
+                <span>STATUS: <span class="status-dot">●</span> LIVE</span>
+            </div>
+        </nav>
+
+        <div class="dashboard-grid">
+            <div class="panel">
+                <div class="panel-title">REAL-TIME TAPE (NSE:NIFTY)</div>
+                <div class="chart-container" id="tv_chart"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                <script type="text/javascript">
+                new TradingView.widget({
+                    "autosize": true,
+                    "symbol": "NSE:NIFTY",
+                    "interval": "5",
+                    "timezone": "Asia/Kolkata",
+                    "theme": "dark",
+                    "style": "1",
+                    "locale": "en",
+                    "enable_publishing": false,
+                    "backgroundColor": "#111111",
+                    "gridColor": "#222222",
+                    "hide_top_toolbar": false,
+                    "hide_legend": false,
+                    "save_image": false,
+                    "container_id": "tv_chart"
+                });
+                </script>
+            </div>
+
+            <div class="panel ai-sidebar">
+                <div class="panel-title">AI PROJECTION ENGINE</div>
+                
+                <div class="ai-card" style="margin-top: 20px;">
+                    <p style="font-family: 'JetBrains Mono'; font-size: 10px; color: var(--text-dim);">PROJECTED TARGET (L1)</p>
+                    <div class="target-price" id="ai-target">₹--.--</div>
+                    <div id="ai-signal-box">
+                        <span class="signal-tag" style="color: var(--text-dim); border-color: var(--border-color);">AWAITING DATA...</span>
+                    </div>
+
+                    <div class="conf-wrapper">
+                        <div class="conf-header">
+                            <span>CONFIDENCE</span>
+                            <span id="ai-conf-val" style="color: var(--accent-cyan);">--%</span>
+                        </div>
+                        <div class="conf-bar"><div class="conf-fill" id="ai-conf-bar"></div></div>
+                    </div>
+                </div>
+
+                <div class="log-box" id="system-logs">
+                    <div class="log-line">> Establishing secure connection...</div>
+                    <div class="log-line">> Listening for AI triggers...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function verifyLogin() {
+            const key = document.getElementById('login-key').value;
+            if (key === "GENESIS_CEO_007") {
+                document.getElementById('auth-overlay').style.display = 'none';
+                document.getElementById('main-dashboard').style.display = 'flex';
+                startAIEngine();
+                logAction("CEO OVERRIDE DETECTED. WELCOME BOSS.");
+            } else {
+                document.getElementById('error-msg').style.display = 'block';
+            }
+        }
+
+        // यहाँ तेरा असली URL डाल दिया है 
+        const SUPABASE_URL = 'https://xmyawkycmsvatgpmwzrj.supabase.co';
+        
+        // बॉस, नीचे वाली लाइन में अपनी असली 'anon' API Key चिपका!
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhteWF3a3ljbXN2YXRncG13enJqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE0NzQ0NDAsImV4cCI6MjEwNzA1MDQ0MH0.g3B7yOcPfD4dY37ukXrH7EGrb0gK5qN7uu8eoqZyQ9g';
+
+        function logAction(msg) {
+            const logs = document.getElementById('system-logs');
+            const time = new Date().toLocaleTimeString('en-IN', { hour12: false });
+            logs.innerHTML += `<div class="log-line">[${time}] > ${msg}</div>`;
+            logs.scrollTop = logs.scrollHeight;
+        }
+
+        async function fetchSupabaseData() {
+            try {
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/genesis_market_data?asset=eq.Nifty%2050%20Index&select=*&order=created_at.desc&limit=1`, {
+                    headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` }
+                });
+                
+                if(!response.ok) throw new Error("API FAILED");
+                const data = await response.json();
+                
+                if(data.length > 0) {
+                    const latest = data[0];
+                    document.getElementById('ai-target').innerText = `₹${latest.predicted_price}`;
+                    
+                    let signalBox = document.getElementById('ai-signal-box');
+                    if(latest.signal.includes('BULLISH') || latest.signal.includes('BUY')) {
+                        signalBox.innerHTML = `<span class="signal-tag signal-bull">▲ ${latest.signal}</span>`;
+                    } else {
+                        signalBox.innerHTML = `<span class="signal-tag signal-bear">▼ ${latest.signal}</span>`;
+                    }
+                    
+                    if(latest.confidence) {
+                        document.getElementById('ai-conf-val').innerText = `${latest.confidence}%`;
+                        document.getElementById('ai-conf-bar').style.width = `${latest.confidence}%`;
+                    }
+                    logAction(`Data synced. Target: ${latest.predicted_price}`);
+                }
+            } catch (error) {
+                logAction("ERROR: Supabase connection failed. Check API Key.");
+            }
+        }
+
+        function startAIEngine() {
+            fetchSupabaseData(); 
+            setInterval(fetchSupabaseData, 300000); 
+        }
+    </script>
+</body>
+</html>
