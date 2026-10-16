@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     
     <!-- 🚀 GOOGLE & AI (GEMINI/CHATGPT) ULTRA SEO META TAGS -->
     <title>Genesis Quantum AI | Institutional Market Telemetry & Options Intelligence</title>
-    <meta name="description" content="Engineered by Tech Consultant. Genesis Quantum (Genesis.AI) is an institutional AI trading system and options intelligence core. Powered by 6 Ensemble Models & Fourier Transform to decode Nifty 50 and Options flow before market open.">
+    <meta name="description" content="Engineered by Tech Consultant. Genesis Quantum (Genesis.AI) is an institutional AI trading system and options intelligence core. Powered by 6 Ensemble Models & Fourier Transform to decode Nifty 50 percentage moves and Options flow.">
     <meta name="keywords" content="best AI for trading, AI options trading prediction, Nifty 50 AI prediction, institutional trading terminal India, Genesis Quantum AI, Tech Consultant Indore, algorithmic trading software">
     <meta name="robots" content="index, follow">
     
@@ -17,7 +17,7 @@
       "@type": "SoftwareApplication",
       "name": "Genesis Quantum AI Core",
       "applicationCategory": "FinanceApplication",
-      "operatingSystem": "Web, Cloud Telemetry",
+      "operatingSystem": "Web, Mobile & Desktop Cloud Telemetry",
       "description": "An institutional-grade B2B quantitative AI telemetry engine for Options Trading and Nifty 50 using Fourier Transform and a 6-Model Ensemble Architecture.",
       "provider": {
         "@type": "Organization",
@@ -32,115 +32,118 @@
     }
     </script>
 
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700;800&family=Space+Grotesk:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700;800&family=Space+Grotesk:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg-void: #020206;
-            --bg-glass: rgba(12, 14, 24, 0.65);
-            --border-glass: rgba(255, 255, 255, 0.08);
+            --bg-glass: rgba(12, 14, 24, 0.78);
+            --border-glass: rgba(255, 255, 255, 0.09);
             --theme-glow: #00f0ff;
             --theme-secondary: #7000ff;
             --bull-color: #00ff88;
             --bear-color: #ff004c;
             --gold-accent: #ffb800;
             --text-main: #ffffff;
-            --text-muted: #6c7293;
+            --text-muted: #7e85a3;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        /* 📱 100% SMOOTH MOBILE & DESKTOP SCROLLING */
+        html, body {
             background-color: var(--bg-void);
             color: var(--text-main);
             font-family: 'Space Grotesk', sans-serif;
             min-height: 100vh;
+            width: 100%;
             overflow-x: hidden;
-            position: relative;
+            overflow-y: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
         }
 
         /* 🌌 AMBIENT FLOATING QUANTUM BACKGROUND */
         .ambient-bg {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: -1; overflow: hidden;
-            background: radial-gradient(circle at 50% 35%, rgba(0, 240, 255, 0.07) 0%, rgba(2, 2, 6, 1) 70%);
-            transition: background 1.5s ease;
+            z-index: -1; pointer-events: none; overflow: hidden;
+            background: radial-gradient(circle at 50% 30%, rgba(0, 240, 255, 0.08) 0%, rgba(2, 2, 6, 1) 75%);
+            transition: background 1.2s ease;
         }
         .orb {
-            position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.35;
-            animation: floatOrb 14s infinite ease-in-out alternate;
+            position: absolute; border-radius: 50%; filter: blur(85px); opacity: 0.3;
+            animation: floatOrb 12s infinite ease-in-out alternate;
         }
-        .orb-1 { width: 350px; height: 350px; background: var(--theme-glow); top: -80px; left: 15%; }
-        .orb-2 { width: 450px; height: 450px; background: var(--theme-secondary); bottom: -120px; right: 10%; animation-delay: -5s; }
+        .orb-1 { width: 300px; height: 300px; background: var(--theme-glow); top: -60px; left: 10%; }
+        .orb-2 { width: 350px; height: 350px; background: var(--theme-secondary); bottom: -100px; right: 5%; animation-delay: -4s; }
         @keyframes floatOrb {
             0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(60px, 40px) scale(1.15); }
+            100% { transform: translate(40px, 30px) scale(1.12); }
         }
 
-        /* 🔒 SECURE LOGIN GATEWAY */
+        /* 🔒 SECURE LOGIN GATEWAY (SCROLLABLE ON SMALL SCREENS) */
         #auth-overlay {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle at center, rgba(10, 12, 22, 0.96) 0%, #020206 100%);
-            backdrop-filter: blur(20px); z-index: 9999;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;
+            backdrop-filter: blur(18px); z-index: 9999;
+            display: flex; flex-direction: column; justify-content: flex-start; align-items: center;
+            padding: 35px 16px; overflow-y: auto;
+        }
+        .auth-wrapper {
+            margin: auto 0; width: 100%; max-width: 440px; display: flex; flex-direction: column; align-items: center;
         }
         .auth-box {
             background: var(--bg-glass); border: 1px solid var(--border-glass);
-            padding: 42px; width: 100%; max-width: 450px; text-align: center;
-            border-radius: 16px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 240, 255, 0.08);
-            animation: floatCard 6s ease-in-out infinite;
+            padding: 32px 24px; width: 100%; text-align: center;
+            border-radius: 16px; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(0, 240, 255, 0.08);
         }
-        @keyframes floatCard {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-        .auth-logo { font-size: 32px; font-weight: 800; letter-spacing: 3px; margin-bottom: 4px; }
+        .auth-logo { font-size: 30px; font-weight: 800; letter-spacing: 3px; margin-bottom: 4px; }
         .auth-logo span { color: var(--theme-glow); text-shadow: 0 0 15px var(--theme-glow); }
-        .auth-desc { font-family: 'JetBrains Mono'; font-size: 10px; color: var(--text-muted); margin-bottom: 22px; letter-spacing: 1.5px; }
+        .auth-desc { font-family: 'JetBrains Mono'; font-size: 10px; color: var(--text-muted); margin-bottom: 18px; letter-spacing: 1px; }
         
         .live-proof-badge {
-            background: rgba(0, 255, 136, 0.06); border: 1px solid rgba(0, 255, 136, 0.25);
+            background: rgba(0, 255, 136, 0.06); border: 1px solid rgba(0, 255, 136, 0.28);
             color: var(--bull-color); font-family: 'JetBrains Mono'; font-size: 10px;
-            padding: 10px; margin-bottom: 22px; border-radius: 8px; line-height: 1.5;
+            padding: 10px; margin-bottom: 18px; border-radius: 8px; line-height: 1.5;
         }
         .api-input {
-            width: 100%; background: rgba(0, 0, 0, 0.6); border: 1px solid var(--border-glass);
-            color: var(--theme-glow); padding: 15px; font-family: 'JetBrains Mono';
-            text-align: center; font-size: 14px; margin-bottom: 14px; border-radius: 8px; outline: none; transition: 0.3s;
+            width: 100%; background: rgba(0, 0, 0, 0.65); border: 1px solid var(--border-glass);
+            color: var(--theme-glow); padding: 14px; font-family: 'JetBrains Mono';
+            text-align: center; font-size: 14px; margin-bottom: 12px; border-radius: 8px; outline: none;
         }
-        .api-input:focus { border-color: var(--theme-glow); box-shadow: 0 0 15px rgba(0, 240, 255, 0.2); }
+        .api-input:focus { border-color: var(--theme-glow); box-shadow: 0 0 15px rgba(0, 240, 255, 0.25); }
         .auth-btn {
             width: 100%; background: linear-gradient(90deg, #00f0ff, #00a8ff); color: #000;
             border: none; padding: 15px; font-weight: 800; font-family: 'Space Grotesk';
-            cursor: pointer; transition: 0.3s; font-size: 14px; letter-spacing: 1.5px;
-            border-radius: 8px; margin-bottom: 14px;
+            cursor: pointer; font-size: 14px; letter-spacing: 1.5px;
+            border-radius: 8px; margin-bottom: 12px;
         }
-        .auth-btn:hover { transform: translateY(-2px); box-shadow: 0 0 25px rgba(0, 240, 255, 0.5); }
         .whatsapp-btn {
-            display: block; width: 100%; background: rgba(0, 255, 136, 0.08);
-            color: var(--bull-color); border: 1px solid rgba(0, 255, 136, 0.4);
+            display: block; width: 100%; background: rgba(0, 255, 136, 0.09);
+            color: var(--bull-color); border: 1px solid rgba(0, 255, 136, 0.45);
             padding: 13px; font-family: 'JetBrains Mono'; font-size: 11px; font-weight: 700;
-            cursor: pointer; border-radius: 8px; transition: 0.3s; margin-bottom: 10px;
+            cursor: pointer; border-radius: 8px; margin-bottom: 10px;
         }
-        .whatsapp-btn:hover { background: var(--bull-color); color: #000; box-shadow: 0 0 20px rgba(0, 255, 136, 0.4); }
-        .email-link { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--text-muted); text-decoration: none; }
-        .error-msg { color: var(--bear-color); font-family: 'JetBrains Mono'; font-size: 11px; margin-top: 14px; display: none; }
-        .seo-footer { max-width: 780px; margin-top: 25px; text-align: center; font-family: 'JetBrains Mono'; font-size: 9px; color: var(--text-muted); line-height: 1.5; opacity: 0.7; }
+        .email-link { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--text-muted); text-decoration: none; display: inline-block; padding: 4px; }
+        .error-msg { color: var(--bear-color); font-family: 'JetBrains Mono'; font-size: 11px; margin-top: 12px; display: none; }
+        .seo-footer { max-width: 680px; margin-top: 22px; text-align: center; font-family: 'JetBrains Mono'; font-size: 9px; color: var(--text-muted); line-height: 1.5; opacity: 0.75; }
 
-        /* 💻 MAIN GENESIS QUANTUM INTERFACE (NO CHARTS, PURE SCI-FI TELEMETRY) */
+        /* 💻📱 MAIN GENESIS DASHBOARD (FULLY SCROLLABLE ON MOBILE & DESKTOP) */
         #main-dashboard {
-            display: none; min-height: 100vh; padding: 20px 30px;
-            flex-direction: column; justify-content: space-between;
+            display: none; width: 100%; max-width: 1320px; margin: 0 auto;
+            padding: 18px 22px 45px 22px;
+            flex-direction: column; gap: 22px;
         }
 
         /* Top Header */
         header {
             display: flex; justify-content: space-between; align-items: center;
-            padding-bottom: 15px; border-bottom: 1px solid var(--border-glass);
-            flex-wrap: wrap; gap: 15px;
+            padding-bottom: 14px; border-bottom: 1px solid var(--border-glass);
+            flex-wrap: wrap; gap: 12px;
         }
-        .brand-title { font-size: 22px; font-weight: 800; letter-spacing: 2px; display: flex; align-items: center; gap: 12px; }
+        .brand-title { font-size: 20px; font-weight: 800; letter-spacing: 2px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
         .brand-title span { color: var(--theme-glow); }
         .live-pill {
-            font-family: 'JetBrains Mono'; font-size: 10px; padding: 4px 10px;
+            font-family: 'JetBrains Mono'; font-size: 9px; padding: 4px 10px;
             border-radius: 20px; background: rgba(0, 255, 136, 0.1);
             border: 1px solid var(--bull-color); color: var(--bull-color);
             display: flex; align-items: center; gap: 6px;
@@ -148,132 +151,163 @@
         .pulse-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--bull-color); animation: blink 1.5s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; box-shadow: 0 0 8px var(--bull-color); } 50% { opacity: 0.2; } }
 
-        .header-telemetry { display: flex; gap: 25px; font-family: 'JetBrains Mono'; font-size: 11px; color: var(--text-muted); }
+        .header-telemetry { display: flex; gap: 18px; font-family: 'JetBrains Mono'; font-size: 10px; color: var(--text-muted); flex-wrap: wrap; }
         .header-telemetry b { color: #fff; }
 
         /* 🌀 CENTER STAGE: THE FLOATING GENESIS QUANTUM ORB */
         .genesis-core-stage {
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            margin: 30px 0; position: relative;
+            padding: 15px 10px; position: relative;
         }
         .core-wrapper {
-            position: relative; width: 240px; height: 240px;
+            position: relative; width: 210px; height: 210px;
             display: flex; align-items: center; justify-content: center;
-            animation: levitate 5s ease-in-out infinite;
+            animation: levitate 4.5s ease-in-out infinite;
         }
         @keyframes levitate {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-14px); }
+            50% { transform: translateY(-10px); }
         }
-        .ring {
-            position: absolute; border-radius: 50%;
-            border: 1px solid transparent;
-            transition: border-color 1s ease, box-shadow 1s ease;
-        }
+        .ring { position: absolute; border-radius: 50%; border: 1px solid transparent; transition: 0.8s ease; }
         .ring-1 {
-            width: 240px; height: 240px;
+            width: 210px; height: 210px;
             border-top: 2px solid var(--theme-glow); border-bottom: 2px solid var(--theme-glow);
-            box-shadow: 0 0 30px rgba(0, 240, 255, 0.15);
+            box-shadow: 0 0 28px rgba(0, 240, 255, 0.15);
             animation: spinRight 10s linear infinite;
         }
         .ring-2 {
-            width: 190px; height: 190px;
+            width: 165px; height: 165px;
             border-left: 2px dashed var(--theme-glow); border-right: 2px dashed var(--theme-glow);
-            opacity: 0.7; animation: spinLeft 7s linear infinite;
+            opacity: 0.75; animation: spinLeft 7s linear infinite;
         }
         .ring-3 {
-            width: 140px; height: 140px;
-            border-top: 1px solid #fff; border-right: 1px solid transparent;
-            opacity: 0.4; animation: spinRight 4s linear infinite;
+            width: 122px; height: 122px;
+            border-top: 1px solid #fff; opacity: 0.4; animation: spinRight 4s linear infinite;
         }
         .core-nucleus {
-            width: 95px; height: 95px; border-radius: 50%;
-            background: radial-gradient(circle, var(--theme-glow) 0%, transparent 75%);
-            box-shadow: 0 0 50px var(--theme-glow);
-            display: flex; align-items: center; justify-content: center;
+            width: 86px; height: 86px; border-radius: 50%;
+            background: radial-gradient(circle, var(--theme-glow) 0%, transparent 78%);
+            box-shadow: 0 0 45px var(--theme-glow);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
             font-family: 'JetBrains Mono'; font-size: 11px; font-weight: 800;
-            letter-spacing: 1px; color: #000; text-align: center;
+            letter-spacing: 0.5px; color: #000; text-align: center;
             animation: pulseCore 3s ease-in-out infinite;
-            transition: all 1s ease;
         }
         @keyframes spinRight { 100% { transform: rotate(360deg); } }
         @keyframes spinLeft { 100% { transform: rotate(-360deg); } }
         @keyframes pulseCore {
-            0%, 100% { transform: scale(0.95); opacity: 0.85; }
-            50% { transform: scale(1.08); opacity: 1; }
+            0%, 100% { transform: scale(0.95); opacity: 0.88; }
+            50% { transform: scale(1.06); opacity: 1; }
         }
 
         .core-status-title {
-            margin-top: 22px; font-family: 'JetBrains Mono'; font-size: 11px;
-            letter-spacing: 3px; color: var(--text-muted); text-transform: uppercase;
+            margin-top: 18px; font-family: 'JetBrains Mono'; font-size: 10px;
+            letter-spacing: 2.5px; color: var(--text-muted); text-transform: uppercase; text-align: center;
         }
         .core-regime-banner {
-            font-size: 32px; font-weight: 800; letter-spacing: 2px; margin-top: 6px;
-            text-shadow: 0 0 25px rgba(255, 255, 255, 0.2); text-align: center;
+            font-size: 28px; font-weight: 800; letter-spacing: 1.5px; margin-top: 6px;
+            text-align: center; line-height: 1.2;
         }
 
-        /* 🏛️ MIDDLE LAYER: 6-AI ENSEMBLE NEURAL NODES (FLOATING PILLS) */
+        /* 🔥 NEW: EXPECTED PERCENTAGE MOVE PILL (UNDER THE ORB) */
+        .pct-move-banner {
+            margin-top: 12px; padding: 8px 18px; border-radius: 30px;
+            background: rgba(255, 255, 255, 0.05); border: 1px solid var(--theme-glow);
+            font-family: 'JetBrains Mono'; font-size: 13px; font-weight: 800;
+            color: #fff; box-shadow: 0 0 20px rgba(0, 240, 255, 0.15);
+            text-align: center;
+        }
+
+        /* 🏛️ 6-AI ENSEMBLE NEURAL NODES */
         .neural-committee-bar {
-            display: flex; justify-content: center; gap: 14px; flex-wrap: wrap;
-            margin-bottom: 30px;
+            display: flex; justify-content: center; gap: 10px; flex-wrap: wrap;
         }
         .ai-node {
             background: var(--bg-glass); border: 1px solid var(--border-glass);
-            padding: 10px 16px; border-radius: 30px; font-family: 'JetBrains Mono';
-            font-size: 10px; display: flex; align-items: center; gap: 8px;
-            backdrop-filter: blur(10px); transition: 0.4s;
+            padding: 8px 13px; border-radius: 25px; font-family: 'JetBrains Mono';
+            font-size: 9px; display: flex; align-items: center; gap: 7px;
         }
-        .node-light { width: 8px; height: 8px; border-radius: 50%; background: var(--theme-glow); box-shadow: 0 0 8px var(--theme-glow); }
+        .node-light { width: 7px; height: 7px; border-radius: 50%; background: var(--theme-glow); box-shadow: 0 0 8px var(--theme-glow); }
 
-        /* ⬇️ BOTTOM PREDICTION DOCK (NO RAW PRICE NUMBERS — PURE VISUAL INTELLIGENCE) */
+        /* ⬇️ BOTTOM PREDICTION DOCK (WITH % PROBABILITY & MAGNITUDE) */
         .prediction-dock {
-            background: linear-gradient(180deg, rgba(16, 18, 32, 0.75) 0%, rgba(6, 7, 12, 0.95) 100%);
+            background: linear-gradient(180deg, rgba(16, 18, 32, 0.85) 0%, rgba(6, 7, 12, 0.98) 100%);
             border: 1px solid var(--border-glass); border-top: 2px solid var(--theme-glow);
-            border-radius: 18px; padding: 25px; backdrop-filter: blur(20px);
-            box-shadow: 0 -10px 50px rgba(0, 0, 0, 0.7);
-            transition: border-color 1s ease;
+            border-radius: 16px; padding: 22px;
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.7);
         }
         .dock-header {
             display: flex; justify-content: space-between; align-items: center;
-            font-family: 'JetBrains Mono'; font-size: 11px; color: var(--text-muted);
-            letter-spacing: 2px; padding-bottom: 16px; margin-bottom: 20px;
-            border-bottom: 1px solid var(--border-glass);
+            font-family: 'JetBrains Mono'; font-size: 10px; color: var(--text-muted);
+            letter-spacing: 1.5px; padding-bottom: 14px; margin-bottom: 18px;
+            border-bottom: 1px solid var(--border-glass); flex-wrap: wrap; gap: 8px;
         }
         .dock-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
         }
         .telemetry-card {
-            background: rgba(0, 0, 0, 0.45); border: 1px solid var(--border-glass);
-            padding: 20px; border-radius: 12px; position: relative; overflow: hidden;
+            background: rgba(0, 0, 0, 0.5); border: 1px solid var(--border-glass);
+            padding: 18px; border-radius: 12px; display: flex; flex-direction: column; justify-content: space-between;
         }
-        .card-label { font-family: 'JetBrains Mono'; font-size: 10px; color: var(--text-muted); letter-spacing: 1.5px; margin-bottom: 12px; }
-        .card-main-state { font-size: 22px; font-weight: 800; letter-spacing: 1px; margin-bottom: 14px; }
+        .card-label { font-family: 'JetBrains Mono'; font-size: 9px; color: var(--text-muted); letter-spacing: 1.5px; margin-bottom: 10px; }
+        .card-main-state { font-size: 20px; font-weight: 800; letter-spacing: 0.5px; margin-bottom: 10px; }
 
-        /* Visual Spectrum Bar (Replaces Raw Numbers) */
+        /* 📊 TUG-OF-WAR BULL VS BEAR PERCENTAGE BAR */
+        .tug-bar-wrapper { margin: 10px 0; }
+        .tug-labels {
+            display: flex; justify-content: space-between; font-family: 'JetBrains Mono';
+            font-size: 11px; font-weight: 800; margin-bottom: 6px;
+        }
+        .tug-track {
+            width: 100%; height: 12px; background: var(--bear-color);
+            border-radius: 6px; overflow: hidden; display: flex;
+            box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
+        }
+        .tug-fill-bull {
+            height: 100%; background: var(--bull-color); width: 50%;
+            box-shadow: 0 0 12px var(--bull-color);
+            transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* Visual Spectrum Bar */
         .spectrum-track {
-            width: 100%; height: 10px; border-radius: 6px;
+            width: 100%; height: 9px; border-radius: 6px;
             background: linear-gradient(90deg, var(--bear-color) 0%, #222230 50%, var(--bull-color) 100%);
-            position: relative; margin: 15px 0 8px 0;
+            position: relative; margin: 14px 0 8px 0;
         }
         .spectrum-pointer {
-            width: 16px; height: 20px; background: #fff; border-radius: 4px;
-            position: absolute; top: -5px; left: 50%; transform: translateX(-50%);
-            box-shadow: 0 0 12px #fff; transition: left 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            width: 14px; height: 18px; background: #fff; border-radius: 4px;
+            position: absolute; top: -4.5px; left: 50%; transform: translateX(-50%);
+            box-shadow: 0 0 12px #fff; transition: left 1s ease;
         }
-        .spectrum-labels { display: flex; justify-content: space-between; font-family: 'JetBrains Mono'; font-size: 9px; color: var(--text-muted); }
+        .spectrum-labels { display: flex; justify-content: space-between; font-family: 'JetBrains Mono'; font-size: 8px; color: var(--text-muted); }
 
         /* Energy Fill Segments */
-        .energy-segments { display: flex; gap: 6px; margin-top: 14px; }
-        .segment { flex: 1; height: 8px; background: #1a1c29; border-radius: 3px; transition: 0.5s; }
+        .energy-segments { display: flex; gap: 5px; margin: 12px 0; }
+        .segment { flex: 1; height: 8px; background: #1a1c29; border-radius: 3px; transition: 0.4s; }
         .segment.active { background: var(--theme-glow); box-shadow: 0 0 10px var(--theme-glow); }
 
-        .sub-telemetry { font-family: 'JetBrains Mono'; font-size: 11px; color: var(--text-muted); margin-top: 12px; line-height: 1.6; }
+        .sub-telemetry { font-family: 'JetBrains Mono'; font-size: 10px; color: var(--text-muted); margin-top: 10px; line-height: 1.65; }
         .sub-telemetry span { color: #fff; font-weight: 700; }
 
-        @media (max-width: 900px) {
-            .dock-grid { grid-template-columns: 1fr; }
-            #main-dashboard { padding: 15px; }
-            .core-regime-banner { font-size: 24px; }
+        /* 📱 MOBILE OPTIMIZATION MEDIA QUERIES */
+        @media (max-width: 960px) {
+            .dock-grid { grid-template-columns: 1fr; gap: 14px; }
+        }
+        @media (max-width: 600px) {
+            #main-dashboard { padding: 14px 12px 40px 12px; gap: 16px; }
+            .brand-title { font-size: 17px; }
+            .header-telemetry { font-size: 9px; gap: 10px; }
+            .core-wrapper { width: 175px; height: 175px; }
+            .ring-1 { width: 175px; height: 175px; }
+            .ring-2 { width: 138px; height: 138px; }
+            .ring-3 { width: 100px; height: 100px; }
+            .core-nucleus { width: 72px; height: 72px; font-size: 10px; }
+            .core-regime-banner { font-size: 20px; }
+            .pct-move-banner { font-size: 11px; padding: 7px 14px; }
+            .prediction-dock { padding: 16px 14px; }
+            .card-main-state { font-size: 17px; }
+            .ai-node { font-size: 8px; padding: 6px 10px; }
         }
     </style>
 </head>
@@ -281,133 +315,157 @@
 
     <!-- 🌌 FLOATING AMBIENT QUANTUM LIGHTS -->
     <div class="ambient-bg" id="ambient-bg">
-        <div class="orb orb-1" id="orb-1"></div>
-        <div class="orb orb-2" id="orb-2"></div>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
     </div>
 
     <!-- 🔒 LOGIN GATEWAY -->
     <div id="auth-overlay">
-        <div class="auth-box">
-            <div class="auth-logo">GENESIS<span>.AI</span></div>
-            <div class="auth-desc">TECH CONSULTANT | QUANTUM TELEMETRY CORE</div>
-            
-            <div class="live-proof-badge">
-                ⚡ 6-MODEL ENSEMBLE + FOURIER SPECTRAL ENGINE<br>
-                PRE-MARKET & INTRADAY REVERSAL INTELLIGENCE
+        <div class="auth-wrapper">
+            <div class="auth-box">
+                <div class="auth-logo">GENESIS<span>.AI</span></div>
+                <div class="auth-desc">TECH CONSULTANT | QUANTUM TELEMETRY CORE</div>
+                
+                <div class="live-proof-badge">
+                    ⚡ 6-MODEL ENSEMBLE + FOURIER SPECTRAL ENGINE<br>
+                    LIVE % TRAJECTORY & OPTIONS FLOW INTELLIGENCE
+                </div>
+                
+                <input type="password" id="login-key" class="api-input" placeholder="ENTER INSTITUTIONAL API KEY" autocomplete="off">
+                <button class="auth-btn" onclick="verifyLogin()">INITIALIZE QUANTUM CORE</button>
+                
+                <button onclick="openQuantumWhatsApp()" class="whatsapp-btn">
+                    💬 WHATSAPP DESK: GET 3-DAY TRIAL KEY
+                </button>
+
+                <a href="mailto:techconsultantindore@gmail.com?subject=Institutional%20API%20Key%20Request" class="email-link">
+                    [ OR APPLY FOR CORPORATE LICENSE VIA EMAIL ]
+                </a>
+                
+                <div id="error-msg" class="error-msg">ACCESS DENIED. INVALID OR EXPIRED LICENSE.</div>
             </div>
-            
-            <input type="password" id="login-key" class="api-input" placeholder="ENTER INSTITUTIONAL API KEY" autocomplete="off">
-            <button class="auth-btn" onclick="verifyLogin()">INITIALIZE QUANTUM CORE</button>
-            
-            <button onclick="openQuantumWhatsApp()" class="whatsapp-btn">
-                💬 WHATSAPP DESK: REQUEST 3-DAY TRIAL KEY
-            </button>
 
-            <a href="mailto:techconsultantindore@gmail.com?subject=Institutional%20API%20Key%20Request" class="email-link">
-                [ OR APPLY FOR CORPORATE LICENSE VIA EMAIL ]
-            </a>
-            
-            <div id="error-msg" class="error-msg">ACCESS DENIED. INVALID OR EXPIRED LICENSE.</div>
-        </div>
-
-        <div class="seo-footer">
-            <strong>GENESIS QUANTUM CORE ARCHITECTURE:</strong> Engineered by Tech Consultant, Genesis.AI utilizes a 6-Model Machine Learning Committee (Random Forest, Extra Trees, Gradient Boosting) paired with Causal Rolling Fast Fourier Transform (FFT) to isolate institutional order-flow in NSE Nifty 50 & Options without lagging retail chart noise.
+            <div class="seo-footer">
+                <strong>GENESIS QUANTUM CORE ARCHITECTURE:</strong> Engineered by Tech Consultant, Genesis.AI utilizes a 6-Model Machine Learning Committee (Random Forest, Extra Trees, Gradient Boosting) paired with Causal Rolling Fast Fourier Transform (FFT) to calculate percentage expansion/contraction probabilities and institutional options flow in NSE Nifty 50.
+            </div>
         </div>
     </div>
 
-    <!-- 💻 MAIN GENESIS DASHBOARD (CHART-FREE VISUAL INTELLIGENCE) -->
+    <!-- 💻📱 MAIN GENESIS DASHBOARD -->
     <div id="main-dashboard">
         
         <header>
             <div class="brand-title">
                 GENESIS<span>.QUANTUM</span>
-                <div class="live-pill"><div class="pulse-dot" id="live-dot"></div> TELEMETRY ACTIVE</div>
+                <div class="live-pill"><div class="pulse-dot"></div> LIVE TELEMETRY</div>
             </div>
             <div class="header-telemetry">
-                <span>STREAM: <b>NSE INSTITUTIONAL FEED</b></span>
-                <span>ARCHITECTURE: <b>6-MODEL ENSEMBLE + FFT</b></span>
-                <span>SYNC STATE: <b id="sync-status">LOCKED</b></span>
+                <span>STREAM: <b>NSE 1H MATRIX</b></span>
+                <span>ENGINE: <b>V6.1 PURGED ENSEMBLE</b></span>
+                <span>PULSE: <b id="last-pulse-time">SYNCING...</b></span>
             </div>
         </header>
 
         <!-- 🌀 FLOATING GENESIS CORE ANIMATION -->
         <div class="genesis-core-stage">
             <div class="core-wrapper">
-                <div class="ring ring-1" id="ring-1"></div>
-                <div class="ring ring-2" id="ring-2"></div>
+                <div class="ring ring-1"></div>
+                <div class="ring ring-2"></div>
                 <div class="ring ring-3"></div>
                 <div class="core-nucleus" id="core-nucleus">SYNCING</div>
             </div>
             <div class="core-status-title">QUANTUM MARKET REGIME</div>
             <div class="core-regime-banner" id="regime-banner">CALIBRATING SPECTRAL WAVE...</div>
+            
+            <!-- 🔥 NEW: EXPECTED % MOVE DISPLAY -->
+            <div class="pct-move-banner" id="pct-move-banner">
+                CALCULATING EXPECTED % DISPLACEMENT...
+            </div>
         </div>
 
         <!-- 🧠 6-AI COMMITTEE NODES -->
         <div class="neural-committee-bar">
-            <div class="ai-node"><div class="node-light"></div> RF-CLASSIFIER (350T): ACTIVE</div>
-            <div class="ai-node"><div class="node-light"></div> ET-EXTREME (350T): ACTIVE</div>
-            <div class="ai-node"><div class="node-light"></div> GB-SEQUENTIAL (220S): ACTIVE</div>
-            <div class="ai-node"><div class="node-light"></div> FOURIER HARMONIC FILTER: LOCKED</div>
-            <div class="ai-node"><div class="node-light"></div> VIX & MACRO ALPHA: SYNCED</div>
+            <div class="ai-node"><div class="node-light"></div> RF-CLASSIFIER (350T)</div>
+            <div class="ai-node"><div class="node-light"></div> ET-EXTREME (350T)</div>
+            <div class="ai-node"><div class="node-light"></div> GB-BOOST (220S)</div>
+            <div class="ai-node"><div class="node-light"></div> FOURIER WAVE FILTER</div>
+            <div class="ai-node"><div class="node-light"></div> BANKNIFTY + VIX ALPHA</div>
         </div>
 
-        <!-- ⬇️ BOTTOM PREDICTION DOCK (VISUAL, NON-NUMERIC) -->
-        <div class="prediction-dock" id="prediction-dock">
+        <!-- ⬇️ BOTTOM PREDICTION DOCK -->
+        <div class="prediction-dock">
             <div class="dock-header">
-                <span>⚡ LIVE QUANTUM PROJECTION MATRIX (NUMBER-FREE INSTITUTIONAL VIEW)</span>
+                <span>⚡ QUANTUM PROJECTION & PROBABILITY MATRIX</span>
                 <span id="last-sync-text">AWAITING PULSE...</span>
             </div>
 
             <div class="dock-grid">
                 
-                <!-- CARD 1: DIRECTIONAL VECTOR -->
+                <!-- CARD 1: DIRECTIONAL PROBABILITY SPLIT (UP % vs DOWN %) -->
                 <div class="telemetry-card">
-                    <div class="card-label">01 // DIRECTIONAL VECTOR FORCE</div>
-                    <div class="card-main-state" id="vector-title">SCANNING FLOW...</div>
-                    
-                    <div class="spectrum-track">
-                        <div class="spectrum-pointer" id="spectrum-pointer"></div>
-                    </div>
-                    <div class="spectrum-labels">
-                        <span>HEAVY DISTRIBUTION (BEAR)</span>
-                        <span>NEUTRAL</span>
-                        <span>STRONG ACCUMULATION (BULL)</span>
+                    <div>
+                        <div class="card-label">01 // DIRECTIONAL PROBABILITY SPLIT</div>
+                        <div class="card-main-state" id="vector-title">SCANNING FLOW...</div>
+                        
+                        <!-- Live Bull vs Bear % Tug-of-War Bar -->
+                        <div class="tug-bar-wrapper">
+                            <div class="tug-labels">
+                                <span style="color: var(--bull-color);" id="bull-prob-txt">▲ UP: --%</span>
+                                <span style="color: var(--bear-color);" id="bear-prob-txt">▼ DOWN: --%</span>
+                            </div>
+                            <div class="tug-track">
+                                <div class="tug-fill-bull" id="tug-fill-bull"></div>
+                            </div>
+                        </div>
+
+                        <div class="spectrum-track">
+                            <div class="spectrum-pointer" id="spectrum-pointer"></div>
+                        </div>
+                        <div class="spectrum-labels">
+                            <span>BEAR DISTRIBUTION</span>
+                            <span>NEUTRAL</span>
+                            <span>BULL ACCUMULATION</span>
+                        </div>
                     </div>
                     <div class="sub-telemetry">
-                        TRAJECTORY HORIZON: <span id="vector-horizon">INTRADAY MULTI-BAR WAVE</span>
+                        EXPECTED 3H MOVE: <span id="expected-pct-txt">--%</span>
                     </div>
                 </div>
 
-                <!-- CARD 2: CONVICTION & ENERGY INTENSITY -->
+                <!-- CARD 2: CONVICTION & BACKTESTED EDGE -->
                 <div class="telemetry-card">
-                    <div class="card-label">02 // ENSEMBLE CONVICTION INTENSITY</div>
-                    <div class="card-main-state" id="conviction-tier">ALIGNING COMMITTEE...</div>
-                    
-                    <div class="energy-segments" id="energy-segments">
-                        <div class="segment"></div>
-                        <div class="segment"></div>
-                        <div class="segment"></div>
-                        <div class="segment"></div>
-                        <div class="segment"></div>
-                        <div class="segment"></div>
-                        <div class="segment"></div>
-                        <div class="segment"></div>
+                    <div>
+                        <div class="card-label">02 // ENSEMBLE CONVICTION & MAGNITUDE</div>
+                        <div class="card-main-state" id="conviction-tier">ALIGNING COMMITTEE...</div>
+                        
+                        <div class="energy-segments" id="energy-segments">
+                            <div class="segment"></div>
+                            <div class="segment"></div>
+                            <div class="segment"></div>
+                            <div class="segment"></div>
+                            <div class="segment"></div>
+                            <div class="segment"></div>
+                            <div class="segment"></div>
+                            <div class="segment"></div>
+                        </div>
                     </div>
                     <div class="sub-telemetry">
-                        FOURIER NOISE FILTER: <span id="fft-state">SPECTRAL CLEANSE ACTIVE</span><br>
+                        MODEL CONFIDENCE SCORE: <span id="conf-pct-txt">--%</span><br>
+                        ESTIMATED POINT DISPLACEMENT: <span id="pts-zone-txt">-- PTS</span><br>
                         COMMITTEE CONSENSUS: <span id="consensus-state">VERIFYING...</span>
                     </div>
                 </div>
 
                 <!-- CARD 3: OPTIONS FLOW & EXECUTION POSTURE -->
                 <div class="telemetry-card">
-                    <div class="card-label">03 // INSTITUTIONAL OPTIONS POSTURE</div>
-                    <div class="card-main-state" id="options-posture" style="color: var(--gold-accent);">EVALUATING GAMMA...</div>
-                    
-                    <div class="sub-telemetry" style="margin-top: 18px;">
+                    <div>
+                        <div class="card-label">03 // INSTITUTIONAL OPTIONS POSTURE</div>
+                        <div class="card-main-state" id="options-posture" style="color: var(--gold-accent);">EVALUATING GAMMA...</div>
+                    </div>
+                    <div class="sub-telemetry">
+                        PREFERRED STRIKE ZONE: <span id="opt-strike-zone" style="color: var(--gold-accent);">--</span><br>
                         DERIVATIVE REGIME: <span id="opt-regime">--</span><br>
-                        SMART MONEY BIAS: <span id="opt-flow">--</span><br>
-                        RISK PROTOCOL: <span id="opt-risk">DYNAMIC VOLATILITY SHIELD</span>
+                        SMART MONEY BIAS: <span id="opt-flow">--</span>
                     </div>
                 </div>
 
@@ -430,7 +488,7 @@
                 "Hi Tech Consultant / Genesis Desk,\n" +
                 "I visited the Genesis.AI Quantum Terminal. Please issue my *3-Day Free Institutional Trial API Key*.\n\n" +
                 "• Name: \n" +
-                "• Trading Desk/Segment: "
+                "• Segment (Nifty/Options): "
             );
             window.open(`https://wa.me/${cc}${p1}${p2}?text=${msg}`, '_blank');
         }
@@ -468,6 +526,7 @@
         function grantAccess() {
             document.getElementById('auth-overlay').style.display = 'none';
             document.getElementById('main-dashboard').style.display = 'flex';
+            window.scrollTo(0, 0);
             fetchQuantumTelemetry();
             setInterval(fetchQuantumTelemetry, 180000);
         }
@@ -481,7 +540,7 @@
         function applyVisualTheme(colorHex, glowRgba) {
             document.documentElement.style.setProperty('--theme-glow', colorHex);
             document.getElementById('ambient-bg').style.background =
-                `radial-gradient(circle at 50% 35%, ${glowRgba} 0%, rgba(2, 2, 6, 1) 70%)`;
+                `radial-gradient(circle at 50% 30%, ${glowRgba} 0%, rgba(2, 2, 6, 1) 75%)`;
         }
 
         async function fetchQuantumTelemetry() {
@@ -496,9 +555,41 @@
                 if (data.length > 0) {
                     const latest = data[0];
                     const isBullish = latest.signal.includes('BULLISH');
-                    const conf = parseFloat(latest.confidence) || 75.0;
+                    const conf = parseFloat(latest.confidence) || 60.0;
+                    const basePrice = parseFloat(latest.price) || 23000;
+                    const targetPrice = parseFloat(latest.predicted_price) || basePrice;
 
-                    // Convert numeric confidence into Visual Energy Segments (1 to 8 bars) without showing raw numbers
+                    // 1. Calculate Exact Expected Percentage (%) Move & Point Zone
+                    const pointDiff = targetPrice - basePrice;
+                    const absPoints = Math.round(Math.abs(pointDiff));
+                    const pctMove = ((pointDiff / basePrice) * 100).toFixed(2);
+                    const signedPct = pointDiff >= 0 ? `+${pctMove}%` : `${pctMove}%`;
+                    const atmStrike = Math.round(basePrice / 50) * 50;
+
+                    // 2. Calculate Bull vs Bear Probability Split (%)
+                    const bullProb = isBullish ? conf.toFixed(1) : (100 - conf).toFixed(1);
+                    const bearProb = isBullish ? (100 - conf).toFixed(1) : conf.toFixed(1);
+
+                    document.getElementById('bull-prob-txt').innerText = `▲ BULL PROB: ${bullProb}%`;
+                    document.getElementById('bear-prob-txt').innerText = `▼ BEAR PROB: ${bearProb}%`;
+                    document.getElementById('tug-fill-bull').style.width = `${bullProb}%`;
+
+                    document.getElementById('expected-pct-txt').innerText = `${signedPct} (3-HOUR WAVE)`;
+                    document.getElementById('conf-pct-txt').innerText = `${conf.toFixed(1)}% (PURGED BACKTEST)`;
+                    document.getElementById('pts-zone-txt').innerText = `~${absPoints} NIFTY POINTS`;
+
+                    // 3. Format IST Timestamp of Last Signal
+                    if (latest.created_at) {
+                        const dt = new Date(latest.created_at);
+                        const istStr = dt.toLocaleString('en-IN', {
+                            timeZone: 'Asia/Kolkata',
+                            day: '2-digit', month: 'short', hour: '2-digit', minute: '2-digit', hour12: true
+                        });
+                        document.getElementById('last-pulse-time').innerText = istStr.toUpperCase();
+                        document.getElementById('last-sync-text').innerText = `SIGNAL LOCKED AT BASE SPOT ~${Math.round(basePrice)}`;
+                    }
+
+                    // 4. Energy Bars (1 to 8)
                     const activeBars = Math.max(3, Math.min(8, Math.round((conf / 100) * 8)));
                     const segments = document.querySelectorAll('#energy-segments .segment');
                     segments.forEach((seg, idx) => {
@@ -506,52 +597,53 @@
                         else seg.classList.remove('active');
                     });
 
-                    // Qualitative Conviction Tier (No raw % numbers shown)
                     let tierText = "MODERATE INSTITUTIONAL EDGE";
                     let consensusText = "4/6 MODELS ALIGNED";
-                    if (conf >= 82) {
+                    if (conf >= 75) {
                         tierText = "MAXIMUM QUANTUM CONVICTION";
-                        consensusText = "FULL 6-MODEL LOCK";
-                    } else if (conf >= 68) {
+                        consensusText = "6/6 FULL COMMITTEE LOCK";
+                    } else if (conf >= 64) {
                         tierText = "HIGH-PROBABILITY FLOW";
-                        consensusText = "STRONG COMMITTEE AGREEMENT";
+                        consensusText = "5/6 STRONG MODEL CONSENSUS";
                     }
                     document.getElementById('conviction-tier').innerText = tierText;
                     document.getElementById('consensus-state').innerText = consensusText;
 
                     if (isBullish) {
                         applyVisualTheme('#00ff88', 'rgba(0, 255, 136, 0.12)');
-                        document.getElementById('core-nucleus').innerText = "BULL WAVE";
+                        document.getElementById('core-nucleus').innerHTML = `BULL WAVE<br><span style="font-size:13px">${signedPct}</span>`;
                         document.getElementById('regime-banner').innerText = "INSTITUTIONAL ACCUMULATION DETECTED";
                         document.getElementById('regime-banner').style.color = "var(--bull-color)";
                         
+                        document.getElementById('pct-move-banner').innerHTML =
+                            `▲ PROJECTED 3H EXPANSION: <span style="color:var(--bull-color)">${signedPct} (+${absPoints} PTS)</span> | BULL ODDS: ${bullProb}%`;
+
                         document.getElementById('vector-title').innerText = "▲ UPWARD EXPANSION BIAS";
                         document.getElementById('vector-title').style.color = "var(--bull-color)";
-                        // Push pointer to Bullish right side (72% to 92%)
-                        const bullPos = Math.min(92, 55 + Math.round((conf - 50) * 0.8));
-                        document.getElementById('spectrum-pointer').style.left = `${bullPos}%`;
+                        document.getElementById('spectrum-pointer').style.left = `${bullProb}%`;
 
                         document.getElementById('options-posture').innerText = "LONG CALL (CE) DOMINANCE";
+                        document.getElementById('opt-strike-zone').innerText = `NIFTY ${atmStrike} CE / ${atmStrike - 50} CE`;
                         document.getElementById('opt-regime').innerText = "BULLISH GAMMA EXPANSION";
-                        document.getElementById('opt-flow').innerText = "ATM CALL ACCUMULATION & PUT WRITING";
+                        document.getElementById('opt-flow').innerText = "CALL ACCUMULATION & PUT WRITING";
                     } else {
                         applyVisualTheme('#ff004c', 'rgba(255, 0, 76, 0.12)');
-                        document.getElementById('core-nucleus').innerText = "BEAR WAVE";
+                        document.getElementById('core-nucleus').innerHTML = `BEAR WAVE<br><span style="font-size:13px">${signedPct}</span>`;
                         document.getElementById('regime-banner').innerText = "INSTITUTIONAL DISTRIBUTION / REVERSAL";
                         document.getElementById('regime-banner').style.color = "var(--bear-color)";
                         
+                        document.getElementById('pct-move-banner').innerHTML =
+                            `▼ PROJECTED 3H CONTRACTION: <span style="color:var(--bear-color)">${signedPct} (-${absPoints} PTS)</span> | BEAR ODDS: ${bearProb}%`;
+
                         document.getElementById('vector-title').innerText = "▼ DOWNWARD PRESSURE BIAS";
                         document.getElementById('vector-title').style.color = "var(--bear-color)";
-                        // Push pointer to Bearish left side (8% to 28%)
-                        const bearPos = Math.max(8, 45 - Math.round((conf - 50) * 0.8));
-                        document.getElementById('spectrum-pointer').style.left = `${bearPos}%`;
+                        document.getElementById('spectrum-pointer').style.left = `${bullProb}%`;
 
                         document.getElementById('options-posture').innerText = "LONG PUT (PE) DOMINANCE";
+                        document.getElementById('opt-strike-zone').innerText = `NIFTY ${atmStrike} PE / ${atmStrike + 50} PE`;
                         document.getElementById('opt-regime').innerText = "BEARISH VIX EXPANSION";
-                        document.getElementById('opt-flow').innerText = "ATM PUT SWEEPS & CALL UNWINDING";
+                        document.getElementById('opt-flow').innerText = "PUT SWEEPS & CALL UNWINDING";
                     }
-
-                    document.getElementById('last-sync-text').innerText = "QUANTUM STREAM: SYNCHRONIZED";
                 }
             } catch (e) {
                 document.getElementById('regime-banner').innerText = "TELEMETRY LINK STANDBY";
